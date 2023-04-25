@@ -1,2 +1,8 @@
 server:
-  port: $PORT
+  port: ${PORT:4896}
+
+base-url: /
+
+spring:
+  application:
+    name: app
