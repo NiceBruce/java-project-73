@@ -1,0 +1,31 @@
+plugins {
+	id 'application'
+	id 'java'
+	id 'checkstyle'
+	id 'org.springframework.boot' version '3.0.6'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'hexlet.code'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '17'
+
+//checkstyle {
+//	toolVersion '10.8.1'
+//}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+task stage(dependsOn: [clean, installDist])
+installDist.mustRunAfter clean
