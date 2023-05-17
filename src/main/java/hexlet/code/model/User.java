@@ -1,13 +1,16 @@
 package hexlet.code.model;
 
 import java.util.Date;
-import javax.persistence.Column;
+import java.util.Set;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+import javax.persistence.Column;
 import javax.persistence.Temporal;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -18,7 +21,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import static javax.persistence.GenerationType.IDENTITY;
 import static javax.persistence.TemporalType.TIMESTAMP;
 
 @Entity
@@ -30,7 +32,8 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @NotBlank
@@ -44,8 +47,22 @@ public class User {
 
     @NotBlank
     @Size(min = 3)
-//    @JsonIgnore
+    @JsonIgnore
     private String password;
+
+    @JsonIgnore
+    @OneToMany(
+            targetEntity = Task.class,
+            mappedBy = "author",
+            fetch = FetchType.LAZY)
+    private Set<Task> authorTasks;
+
+    @JsonIgnore
+    @OneToMany(
+            targetEntity = Task.class,
+            mappedBy = "executor",
+            fetch = FetchType.LAZY)
+    private Set<Task> executorTasks;
 
     @CreationTimestamp
     @Temporal(TIMESTAMP)

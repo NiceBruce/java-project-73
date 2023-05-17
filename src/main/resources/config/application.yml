@@ -16,14 +16,14 @@ spring:
       filter:
         enabled: true
 
+#
+#  datasource:
+#    username: "sa"
+#    password: ""
+#    url: "jdbc:h2:./task_manager"
+
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: create
 
-  h2:
-    console:
-      enabled: true
-      # Указываем путь, по которому будет открываться консоль
-      path: /h2console/
-      settings:
-        web-allow-others: true

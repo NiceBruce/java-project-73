@@ -8,9 +8,9 @@ springdoc:
 
 spring:
   datasource:
-    username: ""
+    username: "sa"
     password: ""
-    url: "jdbc:h2:./taskManager"
+    url: "jdbc:h2:./task_manager"
 
   jpa:
     show-sql: true

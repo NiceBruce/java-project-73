@@ -1,0 +1,23 @@
+base-url: ""
+
+spring:
+  application:
+    name: app
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.xml
+
+  datasource:
+    username: "sa"
+    password: ""
+    url: "jdbc:h2:./test_task_manager"
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
+logging:
+  level:
+    root: INFO

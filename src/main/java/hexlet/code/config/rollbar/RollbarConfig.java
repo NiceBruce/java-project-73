@@ -11,23 +11,17 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan({
-
-// UPDATE TO YOUR PROJECT PACKAGE
     "hexlet.code"
-
 })
 public class RollbarConfig {
 
-    // Добавляем токен через переменные окружения
     @Value("${rollbar_token:}")
     private String rollbarToken;
+
 
     @Value("${spring.profiles.active:}")
     private String activeProfile;
 
-    /**
-     * Register a Rollbar bean to configure App with Rollbar.
-     */
     @Bean
     public Rollbar rollbar() {
 
