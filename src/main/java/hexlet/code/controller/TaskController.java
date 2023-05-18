@@ -33,6 +33,9 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RestController
 @RequestMapping("${base-url}" + POST_CONTROLLER_PATH)
 public class TaskController {
+    private static final String ONLY_OWNER_BY_ID = """
+            @userRepository.findById(#id).get().getEmail() == authentication.getName()
+        """;
     public static final String POST_CONTROLLER_PATH = "/tasks";
     public static final String ID = "/{id}";
 
@@ -76,6 +79,7 @@ public class TaskController {
             @ApiResponse(responseCode = "200", description = "Task deleted"),
             @ApiResponse(responseCode = "404", description = "Task with that id not found")
     })
+//    @PreAuthorize(ONLY_OWNER_BY_ID)
     @DeleteMapping(ID)
     public void deleteTaskStatus(@PathVariable long id) {
         this.taskRepository.deleteById(id);

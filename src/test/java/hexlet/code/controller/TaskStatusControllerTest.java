@@ -5,7 +5,7 @@ import hexlet.code.config.SpringConfigForIT;
 import hexlet.code.model.Task;
 import hexlet.code.model.TaskStatus;
 import hexlet.code.repository.TaskStatusRepository;
-import hexlet.code.utils.TestUtils;
+import hexlet.code.utils.TestUtilsForApp;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,9 +21,9 @@ import java.util.List;
 import static hexlet.code.config.SpringConfigForIT.TEST_PROFILE;
 import static hexlet.code.controller.TaskStatusController.ID;
 import static hexlet.code.controller.TaskStatusController.POST_CONTROLLER_PATH;
-import static hexlet.code.utils.TestUtils.asJson;
-import static hexlet.code.utils.TestUtils.TEST_USERNAME;
-import static hexlet.code.utils.TestUtils.fromJson;
+import static hexlet.code.utils.TestUtilsForApp.asJson;
+import static hexlet.code.utils.TestUtilsForApp.TEST_USERNAME;
+import static hexlet.code.utils.TestUtilsForApp.fromJson;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -47,7 +47,7 @@ public class TaskStatusControllerTest {
     private TaskStatusRepository taskStatusRepository;
 
     @Autowired
-    private TestUtils utils;
+    private TestUtilsForApp utils;
 
     @BeforeEach
     public void before() throws Exception {

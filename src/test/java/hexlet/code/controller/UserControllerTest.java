@@ -6,7 +6,7 @@ import hexlet.code.dto.LoginDto;
 import hexlet.code.dto.UserDto;
 import hexlet.code.model.User;
 import hexlet.code.repository.UserRepository;
-import hexlet.code.utils.TestUtils;
+import hexlet.code.utils.TestUtilsForApp;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,10 +23,10 @@ import static hexlet.code.config.SpringConfigForIT.TEST_PROFILE;
 import static hexlet.code.config.security.SecurityConfig.LOGIN;
 import static hexlet.code.controller.UserController.ID;
 import static hexlet.code.controller.UserController.USER_CONTROLLER_PATH;
-import static hexlet.code.utils.TestUtils.asJson;
-import static hexlet.code.utils.TestUtils.TEST_USERNAME;
-import static hexlet.code.utils.TestUtils.TEST_USERNAME_2;
-import static hexlet.code.utils.TestUtils.fromJson;
+import static hexlet.code.utils.TestUtilsForApp.asJson;
+import static hexlet.code.utils.TestUtilsForApp.TEST_USERNAME;
+import static hexlet.code.utils.TestUtilsForApp.TEST_USERNAME_2;
+import static hexlet.code.utils.TestUtilsForApp.fromJson;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -50,7 +50,7 @@ public class UserControllerTest {
     private UserRepository userRepository;
 
     @Autowired
-    private TestUtils utils;
+    private TestUtilsForApp utils;
 
     @AfterEach
     public void clear() {

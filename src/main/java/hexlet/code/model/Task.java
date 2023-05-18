@@ -91,7 +91,7 @@ public class Task {
                     CascadeType.REFRESH,
                     CascadeType.PERSIST
             },
-            fetch = FetchType.LAZY)
+            fetch = FetchType.EAGER)
     @JoinTable(name = "task_label",
         joinColumns = {@JoinColumn(name = "task_id")},
             inverseJoinColumns = {@JoinColumn(name = "label_id")})

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import hexlet.code.model.Label;
 import hexlet.code.repository.LabelRepository;
 import hexlet.code.config.SpringConfigForIT;
-import hexlet.code.utils.TestUtils;
+import hexlet.code.utils.TestUtilsForApp;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,9 +21,9 @@ import java.util.List;
 import static hexlet.code.config.SpringConfigForIT.TEST_PROFILE;
 import static hexlet.code.controller.LabelController.ID;
 import static hexlet.code.controller.LabelController.POST_CONTROLLER_PATH;
-import static hexlet.code.utils.TestUtils.asJson;
-import static hexlet.code.utils.TestUtils.TEST_USERNAME;
-import static hexlet.code.utils.TestUtils.fromJson;
+import static hexlet.code.utils.TestUtilsForApp.asJson;
+import static hexlet.code.utils.TestUtilsForApp.TEST_USERNAME;
+import static hexlet.code.utils.TestUtilsForApp.fromJson;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -48,7 +48,7 @@ public class LabelControllerTest {
     private LabelRepository labelRepository;
 
     @Autowired
-    private TestUtils utils;
+    private TestUtilsForApp utils;
 
     @BeforeEach
     public void before() throws Exception {

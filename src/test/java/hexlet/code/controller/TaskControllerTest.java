@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import hexlet.code.model.Task;
 import hexlet.code.repository.TaskRepository;
 import hexlet.code.config.SpringConfigForIT;
-import hexlet.code.utils.TestUtils;
+import hexlet.code.utils.TestUtilsForApp;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,9 +21,9 @@ import static hexlet.code.config.SpringConfigForIT.TEST_PROFILE;
 import static hexlet.code.controller.TaskController.ID;
 import static hexlet.code.controller.TaskController.POST_CONTROLLER_PATH;
 
-import static hexlet.code.utils.TestUtils.asJson;
-import static hexlet.code.utils.TestUtils.TEST_USERNAME;
-import static hexlet.code.utils.TestUtils.fromJson;
+import static hexlet.code.utils.TestUtilsForApp.asJson;
+import static hexlet.code.utils.TestUtilsForApp.TEST_USERNAME;
+import static hexlet.code.utils.TestUtilsForApp.fromJson;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,7 +50,7 @@ public class TaskControllerTest {
     private TaskRepository taskRepository;
 
     @Autowired
-    private TestUtils utils;
+    private TestUtilsForApp utils;
 
     @BeforeEach
     public void before() throws Exception {

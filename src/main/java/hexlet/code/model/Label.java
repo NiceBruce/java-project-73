@@ -41,8 +41,8 @@ public class Label {
     @Size(min = 3, max = 1000)
     private String name;
 
-    @ManyToMany(mappedBy = "labels")
     @JsonIgnore
+    @ManyToMany(mappedBy = "labels")
     private Set<Task> tasks;
 
     @CreationTimestamp
