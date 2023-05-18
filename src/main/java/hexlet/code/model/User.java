@@ -46,7 +46,7 @@ public class User {
     private String email;
 
     @NotBlank
-    @Size(min = 3)
+    @Size(min = 3, max = 100)
     @JsonIgnore
     private String password;
 

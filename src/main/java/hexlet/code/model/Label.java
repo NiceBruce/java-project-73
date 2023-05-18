@@ -38,7 +38,7 @@ public class Label {
 
     @NotNull
     @NotBlank
-    @Size(min = 1)
+    @Size(min = 3, max = 1000)
     private String name;
 
     @ManyToMany(mappedBy = "labels")

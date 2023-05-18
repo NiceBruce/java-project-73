@@ -14,11 +14,11 @@ import javax.validation.constraints.Size;
 public class UserDto {
 
     @NotBlank
-    @Size(min = 1)
+    @Size(min = 3, max = 100)
     private String firstName;
 
     @NotBlank
-    @Size(min = 1)
+    @Size(min = 3, max = 100)
     private String lastName;
 
     @NotBlank
