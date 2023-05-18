@@ -1,4 +1,4 @@
-### **Learning Project - Task Management.**
+### **Learning Project - Task Manager.**
 
 * Task Manager is a task management system.
 * It allows you to set tasks, assign performers and change their statuses.
