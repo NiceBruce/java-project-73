@@ -165,6 +165,6 @@ installFrontend {
 processResources.dependsOn assembleFrontend
 // *****************************************************************************
 
-task stage(dependsOn: [clean, installDist])
+task stage(dependsOn: [installDist, clean])
 installDist.mustRunAfter clean
 
