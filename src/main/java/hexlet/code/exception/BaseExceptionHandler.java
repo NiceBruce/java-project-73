@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.exception;
 
 import java.util.List;
 import java.util.NoSuchElementException;

@@ -1,4 +1,4 @@
-package hexlet.code.service;
+package hexlet.code.service.impl;
 
 import hexlet.code.dto.TaskDto;
 import hexlet.code.model.Label;
@@ -7,11 +7,16 @@ import hexlet.code.model.TaskStatus;
 import hexlet.code.model.User;
 import hexlet.code.repository.TaskRepository;
 import hexlet.code.repository.UserRepository;
+import hexlet.code.service.LabelService;
+import hexlet.code.service.TaskService;
+import hexlet.code.service.TaskStatusService;
+import hexlet.code.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -55,7 +60,9 @@ public class TaskServiceImpl implements TaskService {
         Set<Label> labels = Collections.emptySet();
 
         if (!dto.getLabelIds().isEmpty()) {
-            labels = labelService.getLabels(dto.getLabelIds());
+            labels = dto.getLabelIds().stream()
+                    .map(labelService::getCurrentLabel)
+                    .collect(Collectors.toSet());
         }
 
         return Task.builder()

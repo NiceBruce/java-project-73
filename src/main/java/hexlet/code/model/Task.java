@@ -107,7 +107,6 @@ public class Task {
 
     public void addLabels(Set<Label> anotherLabels) {
         this.labels.addAll(anotherLabels);
-//        label.getTasks().add(this);
     }
 
     public void removeLabel() {

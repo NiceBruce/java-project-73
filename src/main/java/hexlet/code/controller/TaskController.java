@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 
 import javax.validation.Valid;
@@ -34,8 +35,9 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("${base-url}" + POST_CONTROLLER_PATH)
 public class TaskController {
     private static final String ONLY_OWNER_BY_ID = """
-            @userRepository.findById(#id).get().getEmail() == authentication.getName()
+            @taskRepository.findById(#id).get().getAuthor().getEmail() == authentication.getName()
         """;
+
     public static final String POST_CONTROLLER_PATH = "/tasks";
     public static final String ID = "/{id}";
 
@@ -45,7 +47,6 @@ public class TaskController {
 
     @Operation(summary = "Get list of all task")
     @ApiResponses(@ApiResponse(responseCode = "200", content =
-            // Указываем тип содержимого ответа
     @Content(schema = @Schema(implementation = Task.class))
     ))
     @GetMapping
@@ -79,7 +80,7 @@ public class TaskController {
             @ApiResponse(responseCode = "200", description = "Task deleted"),
             @ApiResponse(responseCode = "404", description = "Task with that id not found")
     })
-//    @PreAuthorize(ONLY_OWNER_BY_ID)
+    @PreAuthorize(ONLY_OWNER_BY_ID)
     @DeleteMapping(ID)
     public void deleteTaskStatus(@PathVariable long id) {
         this.taskRepository.deleteById(id);
