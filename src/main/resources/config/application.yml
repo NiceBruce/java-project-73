@@ -7,6 +7,9 @@ spring:
   application:
     name: app
 
+  profiles:
+    active: ${APP_ENV}
+
 
   liquibase:
     enabled: true
@@ -22,9 +25,5 @@ spring:
     hibernate:
       ddl-auto: create
 
-
-
-#  profiles:
-#    active=${APP_ENV:prod}:
-#rollbar_token: ${ROLLBAR_TOKEN}
+rollbar_token: ${ROLLBAR_TOKEN:7bffcd5a8d6d4f86929d018889fc075d}
 

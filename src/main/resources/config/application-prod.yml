@@ -2,12 +2,6 @@ server:
   error:
     include-stacktrace: never
 
-spring:
-  devtools:
-    restart:
-      enabled: false
-    livereload:
-      enabled: false
 
   datasource:
     driver-class-name=org: postgresql.Driver
@@ -17,6 +11,10 @@ spring:
 
   jpa:
     show-sql: false
+    hibernate:
+      dialect=org:
+        hibernate:
+          dialect: PostgreSQLDialect
 
 logging:
   level:
@@ -25,3 +23,4 @@ logging:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+
