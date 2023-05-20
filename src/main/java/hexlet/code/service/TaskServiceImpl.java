@@ -20,7 +20,7 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final TaskStatusService taskStatusService;
     private final UserService userService;
-    private final UserRepository userRepository;
+    private final UserRepository userRepository;;
     private final LabelService labelService;
 
     @Override
@@ -41,7 +41,7 @@ public class TaskServiceImpl implements TaskService {
         currentTask.setTaskStatus(taskFromDto.getTaskStatus());
         if (!taskFromDto.getLabels().equals(currentTask.getLabels())) {
             currentTask.removeLabel();
-            currentTask.addLabel(taskFromDto.getLabels().iterator().next());
+            currentTask.addLabels(taskFromDto.getLabels());
         }
 
         return taskRepository.save(currentTask);
@@ -55,7 +55,7 @@ public class TaskServiceImpl implements TaskService {
         Set<Label> labels = Collections.emptySet();
 
         if (!dto.getLabelIds().isEmpty()) {
-            labels = Set.of(labelService.getCurrentLabel(dto.getLabelIds().iterator().next()));
+            labels = labelService.getLabels(dto.getLabelIds());
         }
 
         return Task.builder()

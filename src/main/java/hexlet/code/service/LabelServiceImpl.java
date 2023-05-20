@@ -6,6 +6,9 @@ import hexlet.code.repository.LabelRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class LabelServiceImpl implements LabelService {
@@ -29,5 +32,14 @@ public class LabelServiceImpl implements LabelService {
     @Override
     public Label getCurrentLabel(long id) {
         return labelRepository.findById(id).get();
+    }
+
+    public Set<Label> getLabels(Set<Long> labelIDs) {
+        return labelIDs.stream()
+                .map(labelsId -> labelRepository.findById(labelsId).get())
+                .collect(Collectors.toSet());
+//        return LabelIDs.stream()
+//                .map(labelRepository::getById)
+//                .collect(Collectors.toSet());
     }
 }
