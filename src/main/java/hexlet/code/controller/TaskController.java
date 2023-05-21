@@ -51,6 +51,7 @@ public class TaskController {
     ))
     @GetMapping
     public Iterable<Task> getAll(@QuerydslPredicate(root = Task.class) Predicate predicate) {
+
         return taskRepository.findAll(predicate);
     }
 

@@ -2,7 +2,6 @@ server:
   error:
     include-stacktrace: never
 
-
   datasource:
     driver-class-name=org: postgresql.Driver
     username: ${JDBC_DATABASE_USERNAME}
@@ -19,8 +18,11 @@ server:
 logging:
   level:
     ROOT: INFO
+    web: DEBUG
 
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+
+rollbar_token: ${ROLLBAR_TOKEN}
 
