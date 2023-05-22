@@ -50,15 +50,15 @@ public class Task {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "taskStatus_Id", referencedColumnName = "id")
+    @JoinColumn(name = "task_status_id")
     private TaskStatus taskStatus;
 
     @ManyToOne
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    @JoinColumn(name = "author_id")
     private User author;
 
     @ManyToOne
-    @JoinColumn(name = "executor_id", referencedColumnName = "id")
+    @JoinColumn(name = "executor_id")
     private User executor;
 
     @ManyToMany
@@ -73,15 +73,5 @@ public class Task {
 
     public Task(Long id) {
         this.id = id;
-    }
-
-    public void addLabels(Set<Label> anotherLabels) {
-        this.labels.addAll(anotherLabels);
-    }
-
-    public void removeLabel() {
-        if (!this.labels.isEmpty()) {
-            this.labels.clear();
-        }
     }
 }
