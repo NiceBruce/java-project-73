@@ -7,26 +7,26 @@ import lombok.Setter;
 import lombok.Builder;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToMany;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.JoinTable;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.JoinTable;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
 
-import static javax.persistence.TemporalType.TIMESTAMP;
+import static jakarta.persistence.TemporalType.TIMESTAMP;
 
 @Entity
 @Getter
