@@ -14,8 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 
 import java.util.Date;
 import java.util.Set;
@@ -36,9 +35,7 @@ public class Label {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @NotNull
     @NotBlank
-    @Size(min = 3, max = 1000)
     private String name;
 
     @JsonIgnore

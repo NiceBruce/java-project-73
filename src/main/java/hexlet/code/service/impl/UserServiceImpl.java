@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.NoSuchElementException;
+
 import static hexlet.code.config.security.SecurityConfig.DEFAULT_AUTHORITIES;
 
 @Service
@@ -50,9 +52,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User getCurrentUser() {
-        return userRepository.findByEmail(getCurrentUserName()).get();
+    public User getCurrentUserByEmail() {
+        return userRepository.findByEmail(getCurrentUserName())
+                .orElseThrow(NoSuchElementException::new);
     }
+
+    @Override
+    public User getCurrentUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {

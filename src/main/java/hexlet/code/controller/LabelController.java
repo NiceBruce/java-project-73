@@ -63,7 +63,7 @@ public class LabelController {
     })
     @GetMapping(ID)
     public Label getLabelById(@PathVariable final Long id) {
-        return labelRepository.findById(id).get();
+        return labelService.getCurrentLabelById(id);
     }
 
 

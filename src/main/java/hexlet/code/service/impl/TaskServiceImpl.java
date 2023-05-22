@@ -14,7 +14,8 @@ import hexlet.code.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -38,32 +39,38 @@ public class TaskServiceImpl implements TaskService {
     public Task updateTask(long id, TaskDto dto) {
 
         Task taskFromDto = fromDto(dto);
-        Task currentTask = taskRepository.findById(id).get();
+        taskFromDto.setId(id);
 
-        currentTask.setName(taskFromDto.getName());
-        currentTask.setDescription(taskFromDto.getDescription());
-        currentTask.setExecutor(taskFromDto.getExecutor());
-        currentTask.setTaskStatus(taskFromDto.getTaskStatus());
-        if (!taskFromDto.getLabels().equals(currentTask.getLabels())) {
-            currentTask.removeLabel();
-            currentTask.addLabels(taskFromDto.getLabels());
-        }
+        return taskRepository.save(taskFromDto);
+    }
 
-        return taskRepository.save(currentTask);
+    @Override
+    public Task getCurrentTaskById(long id) {
+        return taskRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public User getExecutor(Long id) {
+        return Optional.ofNullable(id)
+                .map(userRepository::findById)
+                .get()
+                .orElse(null);
+    }
+
+    public Set<Label> getLabels(Set<Long> labelIds) {
+        return Optional.ofNullable(labelIds)
+                .orElse(Set.of())
+                .stream()
+                .map(labelService::getCurrentLabelById)
+                .collect(Collectors.toSet());
     }
 
     public Task fromDto(TaskDto dto) {
 
-        TaskStatus taskStatus = taskStatusService.getCurrentTaskStatus(dto.getTaskStatusId());
-        User author = userService.getCurrentUser();
-        User executor = (dto.getExecutorId() == null) ? null : userRepository.findById(dto.getExecutorId()).get();
-        Set<Label> labels = Collections.emptySet();
-
-        if (!dto.getLabelIds().isEmpty()) {
-            labels = dto.getLabelIds().stream()
-                    .map(labelService::getCurrentLabel)
-                    .collect(Collectors.toSet());
-        }
+        TaskStatus taskStatus = taskStatusService.getCurrentTaskStatusById(dto.getTaskStatusId());
+        User author = userService.getCurrentUserByEmail();
+        User executor = getExecutor(dto.getExecutorId());
+        Set<Label> labels = getLabels(dto.getLabelIds());
 
         return Task.builder()
                 .name(dto.getName())

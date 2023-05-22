@@ -8,5 +8,5 @@ public interface LabelService {
 
     Label updateLabel(long id, LabelDto dto);
 
-    Label getCurrentLabel(long id);
+    Label getCurrentLabelById(long id);
 }

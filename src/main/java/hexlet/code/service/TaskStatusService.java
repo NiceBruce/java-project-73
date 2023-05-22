@@ -9,6 +9,6 @@ public interface TaskStatusService {
 
     TaskStatus updateTaskStatus(long id, TaskStatusDto dto);
 
-    TaskStatus getCurrentTaskStatus(long id);
+    TaskStatus getCurrentTaskStatusById(long id);
 
 }

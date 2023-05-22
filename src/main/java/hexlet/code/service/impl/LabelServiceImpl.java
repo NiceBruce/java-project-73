@@ -7,6 +7,8 @@ import hexlet.code.service.LabelService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 @Service
 @AllArgsConstructor
 public class LabelServiceImpl implements LabelService {
@@ -28,7 +30,9 @@ public class LabelServiceImpl implements LabelService {
     }
 
     @Override
-    public Label getCurrentLabel(long id) {
-        return labelRepository.findById(id).get();
+    public Label getCurrentLabelById(long id) {
+
+        return labelRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
     }
 }

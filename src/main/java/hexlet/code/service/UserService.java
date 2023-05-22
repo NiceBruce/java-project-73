@@ -11,5 +11,7 @@ public interface UserService {
 
     String getCurrentUserName();
 
-    User getCurrentUser();
+    User getCurrentUserByEmail();
+
+    User getCurrentUserById(Long id);
 }

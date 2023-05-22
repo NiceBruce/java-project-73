@@ -63,7 +63,7 @@ public class TaskStatusController {
     })
     @GetMapping(ID)
     public TaskStatus getTaskStatusById(@PathVariable final Long id) {
-        return taskStatusRepository.findById(id).get();
+        return taskStatusService.getCurrentTaskStatusById(id);
     }
 
     @Operation(summary = "Delete task status by his id")

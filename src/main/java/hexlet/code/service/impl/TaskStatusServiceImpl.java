@@ -7,6 +7,8 @@ import hexlet.code.service.TaskStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 
 @Service
 @AllArgsConstructor
@@ -28,7 +30,8 @@ public class TaskStatusServiceImpl implements TaskStatusService {
     }
 
     @Override
-    public TaskStatus getCurrentTaskStatus(long id) {
-        return taskStatusRepository.findById(id).get();
+    public TaskStatus getCurrentTaskStatusById(long id) {
+        return taskStatusRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
     }
 }

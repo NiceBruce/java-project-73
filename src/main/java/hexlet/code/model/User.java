@@ -1,14 +1,11 @@
 package hexlet.code.model;
 
 import java.util.Date;
-import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
-import javax.persistence.FetchType;
 import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.validation.constraints.NotBlank;
@@ -49,20 +46,6 @@ public class User {
     @Size(min = 3, max = 100)
     @JsonIgnore
     private String password;
-
-    @JsonIgnore
-    @OneToMany(
-            targetEntity = Task.class,
-            mappedBy = "author",
-            fetch = FetchType.LAZY)
-    private Set<Task> authorTasks;
-
-    @JsonIgnore
-    @OneToMany(
-            targetEntity = Task.class,
-            mappedBy = "executor",
-            fetch = FetchType.LAZY)
-    private Set<Task> executorTasks;
 
     @CreationTimestamp
     @Temporal(TIMESTAMP)

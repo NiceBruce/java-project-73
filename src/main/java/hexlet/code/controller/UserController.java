@@ -73,7 +73,7 @@ public class UserController {
     })
     @GetMapping(ID)
     public User getUserById(@PathVariable final Long id) {
-        return userRepository.findById(id).get();
+        return userService.getCurrentUserById(id);
     }
 
 

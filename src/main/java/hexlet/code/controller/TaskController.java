@@ -72,7 +72,7 @@ public class TaskController {
     })
     @GetMapping(ID)
     public Task getTaskById(@PathVariable final Long id) {
-        return taskRepository.findById(id).get();
+        return taskService.getCurrentTaskById(id);
     }
 
 
