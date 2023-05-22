@@ -8,7 +8,7 @@ spring:
     name: app
 
   profiles:
-    active: ${APP_ENV:prod}
+    active: ${APP_ENV:dev}
 
 
   liquibase:
