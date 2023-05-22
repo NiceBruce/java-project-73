@@ -13,7 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.JoinColumn;
@@ -50,19 +49,19 @@ public class Task {
     private String description;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "taskStatus_Id", referencedColumnName = "id")
     private TaskStatus taskStatus;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     private User author;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "executor_id", referencedColumnName = "id")
     private User executor;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name = "task_label",
         joinColumns = {@JoinColumn(name = "task_id")},
             inverseJoinColumns = {@JoinColumn(name = "label_id")})
