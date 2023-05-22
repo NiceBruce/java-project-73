@@ -24,5 +24,3 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
 
-rollbar_token: ${ROLLBAR_TOKEN}
-

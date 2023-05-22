@@ -25,4 +25,6 @@ spring:
     hibernate:
       ddl-auto: create
 
+rollbar_token: ${ROLLBAR_TOKEN:7bffcd5a8d6d4f86929d018889fc075d}
+
 
