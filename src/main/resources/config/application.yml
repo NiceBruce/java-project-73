@@ -8,23 +8,22 @@ spring:
     name: app
 
   profiles:
-    active: ${APP_ENV:prod}
-
+    active: ${APP_ENV:dev}
 
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.yaml
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
 
   mvc:
     hiddenmethod:
       filter:
         enabled: true
 
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
-
-rollbar_token: ${ROLLBAR_TOKEN:7bffcd5a8d6d4f86929d018889fc075d}
+  rollbar_token: ${ROLLBAR_TOKEN:7bffcd5a8d6d4f86929d018889fc075d}
 
 

@@ -9,5 +9,4 @@ public interface TaskService {
     Task updateTask(long id, TaskDto dto);
 
     Task getCurrentTaskById(long id);
-
 }

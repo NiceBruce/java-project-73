@@ -11,12 +11,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.JoinTable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,7 +22,7 @@ import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
-
+import static jakarta.persistence.GenerationType.IDENTITY;
 import static jakarta.persistence.TemporalType.TIMESTAMP;
 
 @Entity
@@ -37,7 +35,7 @@ import static jakarta.persistence.TemporalType.TIMESTAMP;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     @NotNull
@@ -45,7 +43,6 @@ public class Task {
     @Size(min = 3, max = 1000)
     private String name;
 
-    @Lob
     private String description;
 
     @NotNull

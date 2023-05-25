@@ -13,7 +13,6 @@ import hexlet.code.service.TaskStatusService;
 import hexlet.code.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;

@@ -8,14 +8,16 @@ springdoc:
 
 spring:
   datasource:
-#    username: "sa"
-#    password: ""
-    url: "jdbc:h2:./task_manager"
+    hikari:
+      auto-commit:false
+    driverClassName: org.postgresql.Driver
+    username: "sa"
+    password: "sa"
+    url: "jdbc:postgresql://localhost:5432/task_manager"
+#    url: "jdbc:h2:./task_manager"
 
   jpa:
     show-sql: true
-    hibernate:
-      ddl-auto: create
 
   h2:
     console:
@@ -24,7 +26,7 @@ spring:
       settings:
         web-allow-others: true
 
-logging:
-  level:
-    root: INFO
-    web: DEBUG
+  logging:
+    level:
+      root: INFO
+      web: DEBUG

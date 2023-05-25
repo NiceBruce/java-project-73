@@ -11,12 +11,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Temporal;
 import jakarta.validation.constraints.NotBlank;
 import java.util.Date;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
 import static jakarta.persistence.TemporalType.TIMESTAMP;
 
 @Entity
@@ -29,7 +29,7 @@ import static jakarta.persistence.TemporalType.TIMESTAMP;
 public class TaskStatus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -39,8 +39,4 @@ public class TaskStatus {
     @CreationTimestamp
     @Temporal(TIMESTAMP)
     private Date createdAt;
-
-    public TaskStatus(Long id) {
-        this.id = id;
-    }
 }

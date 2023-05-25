@@ -23,9 +23,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.security.access.prepost.PreAuthorize;
-
-
 import jakarta.validation.Valid;
+
 
 import static hexlet.code.controller.TaskController.POST_CONTROLLER_PATH;
 import static org.springframework.http.HttpStatus.CREATED;
@@ -50,12 +49,11 @@ public class TaskController {
     @Content(schema = @Schema(implementation = Task.class))
     ))
     @GetMapping
-    public Iterable<Task> getAll(@QuerydslPredicate(root = Task.class) Predicate predicate) {
-
+    public Iterable<Task> getAll(@QuerydslPredicate(root = Task.class) final Predicate predicate) {
         return taskRepository.findAll(predicate);
     }
 
-
+    
     @Operation(summary = "Create new task")
     @ApiResponse(responseCode = "201", description = "Task created")
     @PostMapping
