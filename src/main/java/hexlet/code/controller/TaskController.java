@@ -53,7 +53,6 @@ public class TaskController {
         return taskRepository.findAll(predicate);
     }
 
-    
     @Operation(summary = "Create new task")
     @ApiResponse(responseCode = "201", description = "Task created")
     @PostMapping
