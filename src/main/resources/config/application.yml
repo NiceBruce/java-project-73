@@ -3,16 +3,12 @@ server:
 
 base-url: /api
 
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-
 spring:
   application:
     name: app
 
   profiles:
-    active: ${APP_ENV:dev}
+    active: ${APP_ENV:prod}
 
   liquibase:
     enabled: true
