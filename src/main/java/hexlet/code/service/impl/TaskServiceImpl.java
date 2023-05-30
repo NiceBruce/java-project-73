@@ -6,10 +6,10 @@ import hexlet.code.model.Task;
 import hexlet.code.model.TaskStatus;
 import hexlet.code.model.User;
 import hexlet.code.repository.TaskRepository;
-import hexlet.code.service.LabelService;
 import hexlet.code.service.TaskService;
 import hexlet.code.service.TaskStatusService;
 import hexlet.code.service.UserService;
+import hexlet.code.service.LabelService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
@@ -34,12 +34,11 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task updateTask(long id, TaskDto dto) {
-
-        Task task = fromDto(dto);
-        task.setAuthor(userService.getCurrentUserById(id));
-        task.setId(id);
-
-        return taskRepository.save(task);
+        Task taskFromDto = fromDto(dto);
+        taskFromDto.setId(id);
+        taskFromDto.setAuthor(getCurrentTaskById(id).getAuthor());
+        taskFromDto.setCreatedAt(getCurrentTaskById(id).getCreatedAt());
+        return taskRepository.save(taskFromDto);
     }
 
     @Override

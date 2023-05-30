@@ -1,6 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1685050568657-1
+    id: 1685438801671-1
     author: borisdemin (generated)
     changes:
     - createTable:
@@ -15,13 +15,13 @@ databaseChangeLog:
             type: BIGINT
         - column:
             name: created_at
-            type: TIMESTAMP(6) WITHOUT TIME ZONE
+            type: TIMESTAMP(6)
         - column:
             name: name
             type: VARCHAR(255)
         tableName: labels
 - changeSet:
-    id: 1685050568657-2
+    id: 1685438801671-2
     author: borisdemin (generated)
     changes:
     - createTable:
@@ -42,7 +42,7 @@ databaseChangeLog:
             type: BIGINT
         tableName: task_label
 - changeSet:
-    id: 1685050568657-3
+    id: 1685438801671-3
     author: borisdemin (generated)
     changes:
     - createTable:
@@ -57,13 +57,13 @@ databaseChangeLog:
             type: BIGINT
         - column:
             name: created_at
-            type: TIMESTAMP(6) WITHOUT TIME ZONE
+            type: TIMESTAMP(6)
         - column:
             name: name
             type: VARCHAR(255)
         tableName: task_statuses
 - changeSet:
-    id: 1685050568657-4
+    id: 1685438801671-4
     author: borisdemin (generated)
     changes:
     - createTable:
@@ -78,7 +78,7 @@ databaseChangeLog:
             type: BIGINT
         - column:
             name: created_at
-            type: TIMESTAMP(6) WITHOUT TIME ZONE
+            type: TIMESTAMP(6)
         - column:
             name: description
             type: VARCHAR(255)
@@ -96,7 +96,7 @@ databaseChangeLog:
             type: BIGINT
         tableName: tasks
 - changeSet:
-    id: 1685050568657-5
+    id: 1685438801671-5
     author: borisdemin (generated)
     changes:
     - createTable:
@@ -111,7 +111,7 @@ databaseChangeLog:
             type: BIGINT
         - column:
             name: created_at
-            type: TIMESTAMP(6) WITHOUT TIME ZONE
+            type: TIMESTAMP(6)
         - column:
             name: email
             type: VARCHAR(255)
@@ -126,7 +126,7 @@ databaseChangeLog:
             type: VARCHAR(255)
         tableName: users
 - changeSet:
-    id: 1685050568657-6
+    id: 1685438801671-6
     author: borisdemin (generated)
     changes:
     - addForeignKeyConstraint:
@@ -139,7 +139,7 @@ databaseChangeLog:
         referencedTableName: tasks
         validate: true
 - changeSet:
-    id: 1685050568657-7
+    id: 1685438801671-7
     author: borisdemin (generated)
     changes:
     - addForeignKeyConstraint:
@@ -152,7 +152,7 @@ databaseChangeLog:
         referencedTableName: task_statuses
         validate: true
 - changeSet:
-    id: 1685050568657-8
+    id: 1685438801671-8
     author: borisdemin (generated)
     changes:
     - addForeignKeyConstraint:
@@ -165,7 +165,7 @@ databaseChangeLog:
         referencedTableName: users
         validate: true
 - changeSet:
-    id: 1685050568657-9
+    id: 1685438801671-9
     author: borisdemin (generated)
     changes:
     - addForeignKeyConstraint:
@@ -178,7 +178,7 @@ databaseChangeLog:
         referencedTableName: labels
         validate: true
 - changeSet:
-    id: 1685050568657-10
+    id: 1685438801671-10
     author: borisdemin (generated)
     changes:
     - addForeignKeyConstraint:
