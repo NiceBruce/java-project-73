@@ -6,7 +6,6 @@ import hexlet.code.model.Task;
 import hexlet.code.model.TaskStatus;
 import hexlet.code.model.User;
 import hexlet.code.repository.TaskRepository;
-import hexlet.code.repository.UserRepository;
 import hexlet.code.service.LabelService;
 import hexlet.code.service.TaskService;
 import hexlet.code.service.TaskStatusService;
@@ -25,7 +24,6 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final TaskStatusService taskStatusService;
     private final UserService userService;
-    private final UserRepository userRepository;;
     private final LabelService labelService;
 
     @Override
@@ -37,23 +35,17 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task updateTask(long id, TaskDto dto) {
 
-        Task taskFromDto = fromDto(dto);
-        taskFromDto.setId(id);
+        Task task = fromDto(dto);
+        task.setAuthor(userService.getCurrentUserById(id));
+        task.setId(id);
 
-        return taskRepository.save(taskFromDto);
+        return taskRepository.save(task);
     }
 
     @Override
     public Task getCurrentTaskById(long id) {
         return taskRepository.findById(id)
                 .orElseThrow(NoSuchElementException::new);
-    }
-
-    public User getExecutor(Long id) {
-        return Optional.ofNullable(id)
-                .map(userRepository::findById)
-                .get()
-                .orElse(null);
     }
 
     public Set<Label> getLabels(Set<Long> labelIds) {
@@ -68,7 +60,7 @@ public class TaskServiceImpl implements TaskService {
 
         TaskStatus taskStatus = taskStatusService.getCurrentTaskStatusById(dto.getTaskStatusId());
         User author = userService.getCurrentUserByEmail();
-        User executor = getExecutor(dto.getExecutorId());
+        User executor = userService.getCurrentUserById(dto.getExecutorId());
         Set<Label> labels = getLabels(dto.getLabelIds());
 
         return Task.builder()

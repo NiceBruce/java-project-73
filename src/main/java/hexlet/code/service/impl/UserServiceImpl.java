@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -54,8 +55,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getCurrentUserById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(NoSuchElementException::new);
+        return Optional.ofNullable(id)
+                .map(userRepository::findById)
+                .get()
+                .orElse(null);
     }
 
 }
