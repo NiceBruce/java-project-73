@@ -14,6 +14,6 @@ import jakarta.validation.constraints.Size;
 public class TaskStatusDto {
 
     @NotBlank
-    @Size(min = 3, max = 1000)
+    @Size(min = 1)
     private String name;
 }

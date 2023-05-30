@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(final long id, final UserDto userDto) {
-        final User userToUpdate = userRepository.findById(id).get();
+        final User userToUpdate = userRepository.findById(id).orElseThrow(NoSuchElementException::new);
         userToUpdate.setEmail(userDto.getEmail());
         userToUpdate.setFirstName(userDto.getFirstName());
         userToUpdate.setLastName(userDto.getLastName());
@@ -56,8 +56,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getCurrentUserById(Long id) {
         return Optional.ofNullable(id)
-                .map(userRepository::findById)
-                .get()
+                .flatMap(userRepository::findById)
                 .orElse(null);
     }
 

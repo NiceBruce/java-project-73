@@ -1,23 +1,19 @@
 package hexlet.code.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Temporal;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Temporal;
 import jakarta.validation.constraints.NotBlank;
 
-
 import java.util.Date;
-import java.util.Set;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static jakarta.persistence.TemporalType.TIMESTAMP;
@@ -37,10 +33,6 @@ public class Label {
 
     @NotBlank
     private String name;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "labels")
-    private Set<Task> tasks;
 
     @CreationTimestamp
     @Temporal(TIMESTAMP)

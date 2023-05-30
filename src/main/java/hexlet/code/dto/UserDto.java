@@ -14,11 +14,11 @@ import jakarta.validation.constraints.Size;
 public class UserDto {
 
     @NotBlank
-    @Size(min = 3, max = 100)
+    @Size(min = 1)
     private String firstName;
 
     @NotBlank
-    @Size(min = 3, max = 100)
+    @Size(min = 1)
     private String lastName;
 
     @NotBlank
@@ -26,7 +26,7 @@ public class UserDto {
     private String email;
 
     @NotBlank
-    @Size(min = 3, max = 100)
+    @Size(min = 3)
     private String password;
 
 }

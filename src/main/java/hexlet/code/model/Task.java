@@ -40,7 +40,7 @@ public class Task {
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 1000)
+    @Size
     private String name;
 
     private String description;

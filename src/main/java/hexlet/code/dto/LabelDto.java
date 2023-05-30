@@ -12,6 +12,6 @@ import jakarta.validation.constraints.Size;
 @AllArgsConstructor
 public class LabelDto {
     @NotBlank
-    @Size(min = 3, max = 1000)
+    @Size(min = 1)
     private String name;
 }
